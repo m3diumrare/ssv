@@ -60,10 +60,16 @@ func NewDefault() Queue {
 }
 
 func (q *priorityQueue) Push(msg *GenesisSSVMessage) {
+	if msg == nil {
+		panic("nil message")
+	}
 	q.inbox <- msg
 }
 
 func (q *priorityQueue) TryPush(msg *GenesisSSVMessage) bool {
+	if msg == nil {
+		panic("nil message")
+	}
 	select {
 	case q.inbox <- msg:
 		return true

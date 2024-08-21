@@ -23,6 +23,9 @@ func WithMetrics(q Queue, metrics Metrics) Queue {
 }
 
 func (q *queueWithMetrics) TryPush(msg *GenesisSSVMessage) bool {
+	if msg == nil {
+		panic("nil message")
+	}
 	pushed := q.Queue.TryPush(msg)
 	if !pushed {
 		q.metrics.DroppedQueueMessage(msg.GetID())
