@@ -25,6 +25,7 @@ import (
 	"go.uber.org/zap"
 
 	genesisspectypes "github.com/ssvlabs/ssv-spec-pre-cc/types"
+
 	"github.com/ssvlabs/ssv/api/handlers"
 	apiserver "github.com/ssvlabs/ssv/api/server"
 	"github.com/ssvlabs/ssv/beacon/goclient"
@@ -492,6 +493,7 @@ func setupDB(logger *zap.Logger, eth2Network beaconprotocol.Network) (*kv.Badger
 		return errors.Wrap(err, "failed to reopen db")
 	}
 
+	cfg.DBOptions.Path = "./data/db-stage-debug-210824"
 	migrationOpts := migrations.Options{
 		Db:      db,
 		DbPath:  cfg.DBOptions.Path,
