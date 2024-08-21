@@ -438,7 +438,7 @@ func setupDB(logger *zap.Logger, eth2Network beaconprotocol.Network) (*kv.Badger
 		return errors.Wrap(err, "failed to reopen db")
 	}
 
-	cfg.DBOptions.Path = "./data/db-main-on-stage"
+	cfg.DBOptions.Path = "./data/db-main-on-stage-debug-210824"
 	migrationOpts := migrations.Options{
 		Db:      db,
 		DbPath:  cfg.DBOptions.Path,
