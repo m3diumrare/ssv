@@ -281,7 +281,7 @@ func (n *p2pNetwork) setupDiscovery(logger *zap.Logger) error {
 func (n *p2pNetwork) setupPubsub(logger *zap.Logger) error {
 	cfg := &topics.PubSubConfig{
 		Host:         n.host,
-		TraceLog:     n.cfg.PubSubTrace,
+		TraceLog:     true,
 		MsgValidator: n.msgValidator,
 		MsgHandler:   n.handlePubsubMessages(logger),
 		ScoreIndex:   n.idx,
